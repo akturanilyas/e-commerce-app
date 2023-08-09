@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tsc": "tsc",
+    "tsc:watch": "tsc --watch",
+    "svgr": "npx @svgr/cli ./src/assets/icons -d src/components/icons --typescript --icon --svg-props \"width=24,height=24\""
   },
   "dependencies": {
     "@types/node": "20.4.8",
@@ -15,11 +18,20 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "i18next": "^23.4.4",
+    "i18next-http-backend": "^2.2.1",
     "next": "13.4.12",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-i18next": "^13.0.3",
+    "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "eslint-plugin-prettier": "4.2.1",
+    "@typescript-eslint/eslint-plugin": "6.3.0",
+    "@svgr/cli": "6.5.1"
   }
 }
