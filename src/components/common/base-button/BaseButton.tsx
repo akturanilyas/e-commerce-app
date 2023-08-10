@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import BaseText from '../base-text/BaseText';
 import BaseView from '../base-view/BaseView';
 import { BaseButtonProps } from './BaseButton.interface';
-import CustomIconProvider from "@/providers/CustomIconProvider";
+import CustomIconProvider from '@/providers/CustomIconProvider';
 
 const BaseButton: FC<BaseButtonProps> = (props) => {
   const {
@@ -46,8 +46,8 @@ const BaseButton: FC<BaseButtonProps> = (props) => {
     text-sm
     ${textClassName || ''}
     ${
-      disabled &&
-      `
+      disabled
+      && `
       text-slate-800
       dark:text-slate-200
     `

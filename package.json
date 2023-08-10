@@ -12,26 +12,36 @@
     "svgr": "npx @svgr/cli ./src/assets/icons -d src/components/icons --typescript --icon --svg-props \"width=24,height=24\""
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.4.8",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "axios": "1.2.1",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "fbemitter": "3.0.0",
     "i18next": "^23.4.4",
     "i18next-http-backend": "^2.2.1",
+    "lodash": "^4.17.21",
     "next": "13.4.12",
+    "next-themes": "^0.2.1",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^13.0.3",
+    "react-redux": "^8.1.2",
+    "redux-persist": "6.0.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "eslint-plugin-prettier": "4.2.1",
+    "@svgr/cli": "6.5.1",
+    "@types/fbemitter": "2.0.32",
+    "@types/lodash": "4.14.197",
     "@typescript-eslint/eslint-plugin": "6.3.0",
-    "@svgr/cli": "6.5.1"
+    "axios-mock-adapter": "1.21.2",
+    "eslint-plugin-prettier": "4.2.1"
   }
 }

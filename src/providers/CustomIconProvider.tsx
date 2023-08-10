@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CustomIconProviderProps } from './CustomIconProvider.interface';
 import { twMerge } from 'tailwind-merge';
-import BaseView from '@/components/base-view/BaseView';
+import BaseView from '@/components/common/base-view/BaseView';
 
 const CustomIconProvider: FC<CustomIconProviderProps> = (props) => {
   const { icon, customSize, className, name, iconClassName } = props;
