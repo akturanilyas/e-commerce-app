@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ModalProvider />
             <ResultProvider />
             <BaseView className={'flex flex-row justify-center h-screen w-full'}>
-              <BaseView className={'items-center relative h-full w-full'}>
+              <BaseView className={'items-center relative h-full w-full bg-white dark:bg-black'}>
                 <Header className={'sticky top-0'} />
                 <BaseView className={'w-2/3 items-center h-full'}>{children}</BaseView>
                 <Footer />
