@@ -3,6 +3,8 @@ export interface TabProps {
   textClassName?: string;
   items: Array<{
     label: string;
-    path: string;
+    onClick?: (label: string) => void;
   }>;
+  onClick?: (label: string) => void;
+  currentTab?: string;
 }

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: { APP_API_URL: 'https://fakestoreapi.com' },
+  env: { APP_API_URL: process.env.APP_API_URL },
 };
 
 module.exports = nextConfig;

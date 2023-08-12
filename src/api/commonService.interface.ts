@@ -20,3 +20,9 @@ export type Delete<T = undefined> = {
   id: number | string;
   mutateParams?: Record<string, unknown>;
 };
+
+export type IResponse = {
+  skip: number;
+  total: number;
+  limit: number;
+};

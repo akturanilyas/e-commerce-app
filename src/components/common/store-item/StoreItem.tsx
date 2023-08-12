@@ -21,31 +21,28 @@ export const StoreItem: FC<StoreItemProps> = (props) => {
 
   const stars = (
     <BaseView className={'flex flex-row'}>
-      {Array.from({ length: 5 }, (_, index) => {
-        console.log(index < item.rating.rate);
-
-        return (
-          <CustomIconProvider
-            icon={CUSTOM_ICON.STAR_FULL}
-            iconClassName={`h-full ${index + 0.5 > item.rating.rate ? '' : 'text-yellow-300 '} `}
-            customSize={18}
-          />
-        );
-      })}
+      {Array.from({ length: 5 }, (_, index) => (
+        <CustomIconProvider
+          key={index}
+          icon={CUSTOM_ICON.STAR_FULL}
+          iconClassName={`h-full ${index + 0.5 > item.rating ? '' : 'text-yellow-300 '} `}
+          customSize={18}
+        />
+      ))}
     </BaseView>
   );
 
   return (
     <BaseView className={classes} onClick={() => console.log('tıklandı')}>
-      <BaseView className={'aspect-square items-center align-middle bg-white h-40'}>
-        <Image src={item.image} imageClassName={'max-h-40 w-full object-cover'} />
+      <BaseView className={'aspect-square items-center align-middle bg-white h-40 justify-center'}>
+        <Image src={item.thumbnail} imageClassName={'max-h-40 w-full object-cover'} />
       </BaseView>
       <BaseText text={item.title} className={'px-1 max-h line-clamp-3'} />
       <BaseText text={getFormattedAmount({ amount: item.price, currency: 'USD' })} className={'px-1 pb-4 font-bold'} />
       <BaseView className={'flex flex-row items-center gap-2'}>
         <BaseView className={'flex flex-row items-center gap-2'}>{stars}</BaseView>
 
-        <BaseText text={item.rating.rate.toString()} className={'text-sm'} />
+        <BaseText text={item.rating.toString()} className={'text-sm'} />
       </BaseView>
     </BaseView>
   );

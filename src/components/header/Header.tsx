@@ -20,23 +20,9 @@ const Header: FC<HeaderProps> = (props) => {
     py-4
     bg-slate-100
     border-b-2
+    z-20
     ${className}
   `);
-
-  const items = [
-    {
-      label: 'Home',
-      path: '/home',
-    },
-    {
-      label: 'Path 1',
-      path: '/2',
-    },
-    {
-      label: 'Path 2',
-      path: '/3',
-    },
-  ];
 
   return (
     <BaseView className={classes}>
