@@ -1,4 +1,4 @@
 export const API_PREFIX = {
-  API: '/api',
+  API: '',
   ENUM: '/enum',
 };

@@ -1,3 +1,5 @@
+'use client';
+
 import axios, { AxiosInstance, Method } from 'axios';
 import { ENDPOINT } from '@/api/endpoints';
 import { ACCESS_TOKEN } from '@/constants/localStorage.constant';
@@ -101,14 +103,6 @@ export class AxiosProvider {
           if (!HTTP_STATUS[401].errors.includes(errorCode)) {
             apiError.errorLabel = '';
             apiError.useCase = ApiErrorUseCase.NONE;
-          }
-
-          if (originalRequest.url.indexOf(ENDPOINT.LOGOUT) > -1) {
-            this.clearSubscribers();
-            apiError.errorLabel = '';
-            apiError.useCase = ApiErrorUseCase.NONE;
-
-            return Promise.reject(apiError);
           }
 
           if (auth) {

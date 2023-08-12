@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google';
 import React from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import Header from '@/components/header/Header';
-import Footer from '@/components/footer/Header';
+import Footer from '@/components/footer/Footer';
 import ReduxProvider from '@/providers/ReduxProvider';
 import { PersistGate } from 'redux-persist/integration/react';
 import ModalProvider from '@/providers/ModalProvider';
@@ -26,8 +26,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <PersistGate persistor={persistor}>
             <ModalProvider />
             <ResultProvider />
-            <BaseView className={'flex flex-row justify-center h-screen w-full'}>
-              <BaseView className={'items-center relative h-full w-full bg-white dark:bg-black'}>
+            <BaseView className={'flex flex-row justify-center min-h-screen w-full'}>
+              <BaseView className={'items-center h-full w-full bg-white dark:bg-black'}>
                 <Header className={'sticky top-0'} />
                 <BaseView className={'w-2/3 items-center h-full'}>{children}</BaseView>
                 <Footer />

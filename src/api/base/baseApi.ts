@@ -6,6 +6,8 @@ import { ProvideTag } from '@/enums/apiServiceTag.enum';
 import { ACCESS_TOKEN } from '@/constants/localStorage.constant';
 import { ApiRequestProvider } from '@/providers/ApiRequestProvider';
 
+console.log(process.env.APP_API_URL);
+
 const apiRequestProvider = new ApiRequestProvider({
   baseURL: process.env.APP_API_URL!,
   prefix: API_PREFIX.API,
