@@ -3,12 +3,12 @@
 import BaseView from '@/components/common/base-view/BaseView';
 import { FC, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { Image } from '@/components/common/image/Image';
 import { StoreItemProps } from '@/components/common/store-item/StoreItem.interface';
 import BaseText from '@/components/common/base-text/BaseText';
 import { getFormattedAmount } from '@/utils/amountUtil';
 import CustomIconProvider from '@/providers/CustomIconProvider';
 import { CUSTOM_ICON } from '@/constants/customIcon.constant';
+import { CarouselItem } from '@/components/carousel/CarouselItem';
 
 export const StoreItem: FC<StoreItemProps> = (props) => {
   const { className, imageClassName, item } = props;
@@ -42,30 +42,9 @@ export const StoreItem: FC<StoreItemProps> = (props) => {
     6: 'w-1/6',
   };
 
-  const setDefaultImage = () => {
-    setCurrentImage(item.images[0]);
-  };
-
   return (
     <BaseView className={classes} onClick={() => console.log('tıklandı')}>
-      <BaseView className={'aspect-square items-center align-middle bg-white h-40 justify-center relative rounded-2xl'}>
-        <Image src={currentImage} imageClassName={'max-h-40 w-full object-cover'} />
-        <BaseView className={'absolute flex-row w-full h-full'}>
-          {item.images.map((image) => (
-            <BaseView
-              key={image}
-              className={`z-10 h-full flex ${width[item.images.length as keyof typeof width]}`}
-              onMouseLeave={setDefaultImage}
-              onMouseEnter={() => setCurrentImage(image)}
-            />
-          ))}
-        </BaseView>
-        <BaseView className={'flex-row absolute bottom-1 bg-slate-200 rounded-md'}>
-          {item.images.map((image) => (
-            <CustomIconProvider key={image} icon={CUSTOM_ICON.DOT_CIRCLE} iconClassName={`${image === currentImage && 'text-slate-500'}`} customSize={12} />
-          ))}
-        </BaseView>
-      </BaseView>
+      <CarouselItem images={item.images} />
       <BaseText text={item.title} className={'px-1 max-h line-clamp-3'} />
       <BaseText text={getFormattedAmount({ amount: item.price, currency: 'USD' })} className={'px-1 pb-4 font-bold'} />
       <BaseView className={'flex flex-row items-center gap-2'}>
