@@ -4,7 +4,7 @@ export type Product = {
   description: string;
   discountPercentage: string;
   id: number;
-  images: string;
+  images: Array<string>;
   price: number;
   rating: number;
   stock: number;
