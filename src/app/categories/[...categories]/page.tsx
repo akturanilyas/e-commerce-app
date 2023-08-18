@@ -5,7 +5,7 @@ import BaseView from '@/components/common/base-view/BaseView';
 import { StoreItem } from '@/components/common/store-item/StoreItem';
 import {
   useGetCategoriesQuery,
-  useGetProductQuery,
+  useGetProductsQuery,
   useLazyGetCategoryProductsQuery,
 } from '@/api/base/services/product-service/productService';
 import Tab from '@/components/common/tab/Tab';
@@ -15,7 +15,7 @@ import { words } from 'lodash';
 const Page = () => {
   const route = useRouter();
   const pathname = usePathname();
-  const { data: productsResponse } = useGetProductQuery({});
+  const { data: productsResponse } = useGetProductsQuery({});
   const { data: categories } = useGetCategoriesQuery({});
   const [getProducts, { data: categoryProducts }] = useLazyGetCategoryProductsQuery();
   const items = categories?.slice(0, 5).map((category) => ({

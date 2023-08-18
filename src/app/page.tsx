@@ -3,7 +3,10 @@
 import React from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import { StoreItem } from '@/components/common/store-item/StoreItem';
-import { useGetCategoriesQuery, useGetProductQuery } from '@/api/base/services/product-service/productService';
+import {
+    useGetCategoriesQuery,
+    useGetProductsQuery,
+} from '@/api/base/services/product-service/productService';
 import Tab from '@/components/common/tab/Tab';
 import { usePathname, useRouter } from 'next/navigation';
 import { words } from 'lodash';
@@ -11,7 +14,7 @@ import { words } from 'lodash';
 const Page = () => {
   const route = useRouter();
   const pathname = usePathname();
-  const { data: productsResponse } = useGetProductQuery({});
+  const { data: productsResponse } = useGetProductsQuery({});
   const { data: categories } = useGetCategoriesQuery({});
   const items = categories?.slice(0, 5).map((category) => ({
     label: category,

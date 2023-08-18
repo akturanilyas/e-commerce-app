@@ -8,7 +8,7 @@ import { ApiServiceMethod } from '@/enums/apiServiceMethods.enum';
 
 export const productServiceApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProduct: builder.query<ProductsQueryResponse, Get>({
+    getProducts: builder.query<ProductsQueryResponse, Get>({
       query: ({ query }) => ({
         url: `${ENDPOINT.PRODUCTS}`,
         method: ApiServiceMethod.GET,
@@ -32,4 +32,4 @@ export const productServiceApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetProductQuery, useLazyGetProductQuery, useGetCategoriesQuery, useLazyGetCategoryProductsQuery } = productServiceApi;
+export const { useGetProductsQuery, useLazyGetProductsQuery, useGetCategoriesQuery, useLazyGetCategoryProductsQuery } = productServiceApi;
