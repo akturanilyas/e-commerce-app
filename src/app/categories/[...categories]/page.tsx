@@ -28,8 +28,8 @@ const Page = () => {
   }, [pathname]);
 
   return (
-    <BaseView>
-      <BaseView className={'bg-slate-100 py-2 mt-2 border border-slate-200 rounded-md'}>
+    <BaseView className={'w-full h-full'}>
+      <BaseView className={'py-3 shadow-md mt-2 border border-slate-200 rounded-md'}>
         <Tab
           items={items || []}
           onClick={(label) => {
@@ -38,7 +38,7 @@ const Page = () => {
           currentTab={words(pathname).pop()}
         />
       </BaseView>
-      <BaseView className={'flex flex-row flex-wrap border-2 border-slate-200 rounded-md h-full my-4'}>
+      <BaseView className={'flex flex-row flex-wrap border-2 border-slate-200 rounded-md h-full my-4 shadow-md'}>
         {(categoryProducts?.products || productsResponse?.products)?.map((item) => (
           <BaseView key={item.id} className={'sm:w-1/2 md:w-1/4 lg:w-1/5 p-4'}>
             <StoreItem key={item.id} item={item} />
