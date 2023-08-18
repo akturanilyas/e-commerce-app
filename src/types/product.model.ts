@@ -1,4 +1,4 @@
-export type Product = {
+export type ListProduct = {
   brand: string;
   category: string;
   description: string;
@@ -10,4 +10,18 @@ export type Product = {
   stock: number;
   thumbnail: string;
   title: string;
+};
+
+export type Product = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: Array<string>;
 };
