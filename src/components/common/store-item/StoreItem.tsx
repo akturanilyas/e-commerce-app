@@ -8,17 +8,19 @@ import BaseText from '@/components/common/base-text/BaseText';
 import { getFormattedAmount } from '@/utils/amountUtil';
 import CustomIconProvider from '@/providers/CustomIconProvider';
 import { CUSTOM_ICON } from '@/constants/customIcon.constant';
-import { CarouselItem } from '@/components/carousel/CarouselItem';
 import BaseButton from '@/components/common/base-button/BaseButton';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { CarouselItem } from '@/components/carousel-item/CarouselItem';
+import { MAIN_PATH } from '@/constants/mainPath.constant';
 
 export const StoreItem: FC<StoreItemProps> = (props) => {
   const { className, imageClassName, item } = props;
   const pathname = usePathname();
   const ref = useRef<HTMLDivElement>(null);
   const classes = twMerge(`
-     border-2 border-slate-200 rounded-2xl hover:scale-110 bg-slate-100
+     border-2 border-slate-200 
+     rounded-2xl hover:scale-110 bg-slate-100
      h-80
      group
      justify-between
@@ -39,10 +41,10 @@ export const StoreItem: FC<StoreItemProps> = (props) => {
   );
 
   return (
-    <Link href={`${pathname}/products/${item.id.toString()}`}>
+    <Link href={`${pathname}${MAIN_PATH.PRODUCTS}/${item.id.toString()}`}>
       <BaseView className={classes} ref={ref}>
         <BaseView>
-          <CarouselItem images={item.images} />
+          <CarouselItem images={item.images} imageContainerClassName={'h-40'} imageClassName={'max-h-40'} />
           <BaseText text={item.title} className={'px-1 max-h line-clamp-3'} />
           <BaseText
             text={getFormattedAmount({ amount: item.price, currency: 'USD' })}

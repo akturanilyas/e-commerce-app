@@ -1,31 +1,30 @@
 'use client';
 
-import BaseView from '@/components/common/base-view/BaseView';
 import { FC, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
+import BaseView from '@/components/common/base-view/BaseView';
 import { Image } from '@/components/common/image/Image';
 import CustomIconProvider from '@/providers/CustomIconProvider';
 import { CUSTOM_ICON } from '@/constants/customIcon.constant';
-import { CarouselItemProps } from '@/components/carousel/CarouselItem.interface';
+import { twMerge } from 'tailwind-merge';
+import { CarouselItemProps } from '@/components/carousel-item/CarouselItem.interface';
 
 export const CarouselItem: FC<CarouselItemProps> = (props) => {
-  const { className, images } = props;
-  const [currentImage, setCurrentImage] = useState<string>(images[0]);
+  const { className, images, imageClassName, imageContainerClassName } = props;
+  const [currentImage, setCurrentImage] = useState<string>(images[3]);
 
   const classes = twMerge(`
-     aspect-square 
-     items-center 
-     align-middle 
-     bg-white 
-     h-40 
-     justify-center 
-     relative 
      rounded-2xl
+     relative
+     items-center
      ${className} 
   `);
 
+  const setDefaultImage = () => {
+    setCurrentImage(images[0]);
+  };
+
   const width = {
-    1: 'w-1/1',
+    1: 'w-full',
     2: 'w-1/2',
     3: 'w-1/3',
     4: 'w-1/4',
@@ -33,13 +32,15 @@ export const CarouselItem: FC<CarouselItemProps> = (props) => {
     6: 'w-1/6',
   };
 
-  const setDefaultImage = () => {
-    setCurrentImage(images[0]);
-  };
+  const imageContainerClasses = twMerge(`
+  bg-white rounded-2xl
+  ${imageContainerClassName}
+  `);
 
   return (
     <BaseView className={classes}>
-      <Image src={currentImage} imageClassName={'max-h-40 w-full object-cover'} />
+      <Image src={currentImage} className={imageContainerClasses} imageClassName={imageClassName} />
+
       <BaseView className={'absolute flex-row w-full h-full'}>
         {images.map((image) => (
           <BaseView
@@ -50,6 +51,7 @@ export const CarouselItem: FC<CarouselItemProps> = (props) => {
           />
         ))}
       </BaseView>
+
       <BaseView className={'flex-row absolute bottom-2 bg-slate-200 rounded-md'}>
         {images.map((image) => (
           <CustomIconProvider

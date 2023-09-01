@@ -16,10 +16,10 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
+    <html lang={'en'}>
       <head>
         <title>{'Trendburada'}</title>
-        <meta name='description' content={'Trendburada kaçırma..'} />
+        <meta name={'description'} content={'Trendburada kaçırma..'} />
       </head>
       <body className={inter.className}>
         <ReduxProvider>
