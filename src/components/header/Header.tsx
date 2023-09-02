@@ -32,7 +32,6 @@ const Header: FC<HeaderProps> = (props) => {
       <BaseView className={'w-1/6 items-start cursor-pointer'}>
         <Logo onClick={() => router.push('/')} />
       </BaseView>
-      <TextInput form={form} name={'search'} />
       <BaseView className={'w-1/6 items-end'}>
         <DarkModeButton />
       </BaseView>

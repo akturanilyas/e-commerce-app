@@ -25,7 +25,7 @@ const Tab: FC<TabProps> = (props) => {
       {items.map((tab) => {
         const textClassName = twMerge(`${textClasses} ${currentTab === tab.label ? 'text-slate-50' : ''}`);
 
-        const buttonClassName = `py-1 px-4 ${currentTab === tab.label ? 'bg-slate-400 dark:bg-green-450' : ''}`;
+        const buttonClassName = `py-1 my-2 px-4 ${currentTab === tab.label ? 'bg-slate-400 dark:bg-green-450' : ''}`;
 
         return (
           <TextButton

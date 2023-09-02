@@ -82,7 +82,7 @@ const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>
             label={label}
             labelClassName={labelClassName}
             inputClassName={inputClasses}
-            placeholder={placeholder && translate({ value: placeholder })}
+            placeholder={placeholder}
             onBlur={() => handleOnBlur({ value, _onBlur: onBlur })}
             onChange={(event: FormEvent<HTMLInputElement>) => handleOnChange(event, onChange)}
             onKeyDown={(event) => onKeyDown && onKeyDown(event)}
