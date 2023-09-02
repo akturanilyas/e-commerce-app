@@ -6,7 +6,7 @@ import Image from 'next/image';
 import logo from './../../../public/vercel.svg';
 
 const Logo: FC<LogoProps> = (props) => {
-  const { className, logoClassName } = props;
+  const { className, logoClassName, onClick } = props;
 
   const classes = twMerge(`
      flex-row items-center w-64 px-4
@@ -19,7 +19,7 @@ const Logo: FC<LogoProps> = (props) => {
   `);
 
   return (
-    <BaseView className={classes}>
+    <BaseView className={classes} onClick={onClick}>
       <Image src={logo} width={140} height={20} alt={'logo'} className={logoClasses} />
     </BaseView>
   );

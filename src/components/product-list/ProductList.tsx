@@ -40,7 +40,7 @@ const ProductList: FC<ProductListProps> = (props) => {
         currentTab={category}
       />
 
-      <BaseView className={'flex flex-row flex-wrap border-2 border-slate-200 rounded-md h-full my-4 shadow-md'}>
+      <BaseView className={'flex flex-row flex-wrap border-2 border-slate-200 dark:border-gray-700 dark:bg-gray-800 rounded-md h-full my-4 shadow-md'}>
         {(categoryProducts?.products || products)?.map((item) => (
           <BaseView key={item.id} className={'sm:w-1/2 md:w-1/4 lg:w-1/5 p-4'}>
             <StoreItem key={item.id} item={item} />

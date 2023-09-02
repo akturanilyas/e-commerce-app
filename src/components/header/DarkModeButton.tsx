@@ -9,7 +9,7 @@ const DarkModeButton = () => {
 
   return (
     <WrapperButton onClick={() => changeDarkMode(!isDarkMode)} name={'dark-mode'}>
-      <CustomIconProvider icon={CUSTOM_ICON[isDarkMode ? 'SUN' : 'MOON']} customSize={20} />
+      <CustomIconProvider icon={CUSTOM_ICON[isDarkMode ? 'SUN' : 'MOON']} customSize={20} className={'text-slate-600 dark:text-slate-200'} />
     </WrapperButton>
   );
 };

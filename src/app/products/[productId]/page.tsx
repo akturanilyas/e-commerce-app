@@ -38,14 +38,14 @@ const Page = () => {
     <>
       {product && (
         <BaseView className={'h-full w-full pt-4'}>
-          <BaseView className={'flex flex-row w-full border rounded-2xl divide-x-2 h-3/5'}>
+          <BaseView className={'flex flex-row w-full border rounded-2xl dark:border-gray-700 divide-x-2 dark:divide-gray-700 h-3/5'}>
             <BaseView className={'w-1/2 align-middle h-full p-8'}>
               <BaseView className={'h-full max-h-full'}>
                 <CarouselItem images={product.images} className={'h-full max-h-full'} imageClassName={'max-h-full'} imageContainerClassName={'h-full'} />
               </BaseView>
             </BaseView>
 
-            <BaseView className={'w-1/2 bg-slate-100 h-full rounded-r-2xl p-2 justify-between'}>
+            <BaseView className={'w-1/2 bg-slate-100 dark:bg-gray-800 h-full rounded-r-2xl p-2 justify-between'}>
               <BaseView>
                 <BaseText text={product.title} className={'text-lg font-bold pt-1 text-slate-400'} />
                 <BaseText text={product.brand} className={'text-lg text-green-450 pb-2'} />

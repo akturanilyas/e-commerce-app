@@ -3,7 +3,7 @@ import BaseView from '@/components/common/base-view/BaseView';
 import BaseText from '@/components/common/base-text/BaseText';
 
 const Footer: FC = () => (
-  <BaseView className={'bg-slate-100 w-full items-center py-4'}>
+  <BaseView className={'bg-slate-100 dark:bg-gray-800 w-full items-center py-4'}>
     <BaseView className={'flex flex-row w-2/3 justify-evenly'}>
       <BaseView>
         <BaseText text={'77418 Hobart Cape East Kasandra'} className={'text-sm'}/>
