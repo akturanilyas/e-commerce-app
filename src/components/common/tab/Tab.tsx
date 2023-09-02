@@ -10,7 +10,7 @@ const Tab: FC<TabProps> = (props) => {
   const { className, items, textClassName, onClick } = props;
   const [currentTab, setCurrentTab] = useState<string | undefined>(props.currentTab);
   const classes = twMerge(`
-    flex flex-row flex-1 justify-evenly
+    flex flex-row flex-1 justify-evenly dark:bg-slate-600 dark:border-slate-700
     ${className}
   `);
 
@@ -23,16 +23,16 @@ const Tab: FC<TabProps> = (props) => {
   return (
     <BaseView className={classes}>
       {items.map((tab) => {
-        const _className = twMerge(`${textClasses} ${currentTab === tab.label ? 'text-slate-50' : ''}`);
+        const textClassName = twMerge(`${textClasses} ${currentTab === tab.label ? 'text-slate-50' : ''}`);
 
-        const buttonClass = `py-1 px-4 ${currentTab === tab.label ? 'bg-slate-400' : ''}`;
+        const buttonClassName = `py-1 px-4 ${currentTab === tab.label ? 'bg-slate-400 dark:bg-green-450' : ''}`;
 
         return (
           <TextButton
             key={tab.label}
             label={tab.label}
-            className={buttonClass}
-            textClassName={_className}
+            className={buttonClassName}
+            textClassName={textClassName}
             onClick={() => {
               setCurrentTab(tab.label);
               (tab?.onClick && tab?.onClick(tab.label)) || (onClick && onClick(tab.label));
