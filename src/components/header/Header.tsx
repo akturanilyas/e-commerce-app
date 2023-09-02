@@ -19,6 +19,7 @@ const Header: FC<HeaderProps> = (props) => {
     px-4
     py-4
     bg-slate-100
+    dark:bg-black
     border-b-2
     z-20
     ${className}

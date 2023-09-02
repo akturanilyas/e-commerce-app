@@ -29,7 +29,7 @@ const BaseInput = forwardRef((props: BaseInputProps, ref: ForwardedRef<HTMLInput
     dark:text-slate-200
     bg-slate-100
     outline-none
-    dark:bg-slate-800
+    dark:bg-slate-600
     disabled:bg-grey-300
     dark:disabled:bg-grey-500
     disabled:cursor-not-allowed
