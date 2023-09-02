@@ -1,21 +1,23 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import { StoreItem } from '@/components/common/store-item/StoreItem';
 import {
   useGetCategoriesQuery,
-  useGetProductsQuery,
   useLazyGetCategoryProductsQuery,
 } from '@/api/base/services/product-service/productService';
 import Tab from '@/components/common/tab/Tab';
-import { usePathname, useRouter } from 'next/navigation';
-import { words } from 'lodash';
+import { useParams, useRouter } from 'next/navigation';
+import { ProductListProps } from '@/components/product-list/ProductList.interface';
+import { MAIN_PATH } from '@/constants/mainPath.constant';
 
-const Page = () => {
+const ProductList: FC<ProductListProps> = (props) => {
+  const { products } = props;
+  const { category } = useParams() as {
+    category: string;
+  };
   const route = useRouter();
-  const pathname = usePathname();
-  const { data: productsResponse } = useGetProductsQuery({});
   const { data: categories } = useGetCategoriesQuery({});
   const [getProducts, { data: categoryProducts }] = useLazyGetCategoryProductsQuery();
   const items = categories?.slice(0, 5).map((category) => ({
@@ -24,22 +26,22 @@ const Page = () => {
   }));
 
   useEffect(() => {
-    getProducts({ query: { type: words(pathname).pop() } });
-  }, [pathname]);
+    category && getProducts({ query: { type: category } });
+  }, [category]);
 
   return (
     <BaseView className={'w-full h-full'}>
-      <BaseView className={'py-3 shadow-md mt-2 border border-slate-200 rounded-md'}>
-        <Tab
-          items={items || []}
-          onClick={(label) => {
-            route.push(label);
-          }}
-          currentTab={words(pathname).pop()}
-        />
-      </BaseView>
+      <Tab
+        className={'py-3 shadow-md mt-2 border border-slate-200 rounded-md'}
+        items={items || []}
+        onClick={(label) => {
+          route.push(`${MAIN_PATH.CATEGORIES}/${label}`);
+        }}
+        currentTab={category}
+      />
+
       <BaseView className={'flex flex-row flex-wrap border-2 border-slate-200 rounded-md h-full my-4 shadow-md'}>
-        {(categoryProducts?.products || productsResponse?.products)?.map((item) => (
+        {(categoryProducts?.products || products)?.map((item) => (
           <BaseView key={item.id} className={'sm:w-1/2 md:w-1/4 lg:w-1/5 p-4'}>
             <StoreItem key={item.id} item={item} />
           </BaseView>
@@ -49,4 +51,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default ProductList;
