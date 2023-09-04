@@ -1,5 +1,5 @@
 import BaseView from '@/components/common/base-view/BaseView';
-import { FC, useRef } from 'react';
+import React, { FC, MouseEvent, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { StoreItemProps } from '@/components/common/store-item/StoreItem.interface';
 import BaseText from '@/components/common/base-text/BaseText';
@@ -10,9 +10,14 @@ import BaseButton from '@/components/common/base-button/BaseButton';
 import { useRouter } from 'next/navigation';
 import { CarouselItem } from '@/components/carousel-item/CarouselItem';
 import { MAIN_PATH } from '@/constants/mainPath.constant';
+import { useAppDispatch } from '@/hooks/useRedux';
+import { addProduct } from '@/redux/slices/mainSlice';
+import { useLazyGetProductQuery } from '@/api/base/services/product-service/productService';
 
 export const StoreItem: FC<StoreItemProps> = (props) => {
-  const { className, imageClassName, item } = props;
+  const dispatch = useAppDispatch();
+  const { className, item } = props;
+  const [getProduct] = useLazyGetProductQuery();
   const router = useRouter();
   const ref = useRef<HTMLDivElement>(null);
   const classes = twMerge(`
@@ -38,6 +43,16 @@ export const StoreItem: FC<StoreItemProps> = (props) => {
     </BaseView>
   );
 
+  const _addProduct = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    getProduct({ id: item.id })
+      .unwrap()
+      .then((product) => {
+        dispatch(addProduct({ product }));
+      });
+  };
+
   return (
     <BaseView className={classes} ref={ref} onClick={() => router.push(`${MAIN_PATH.PRODUCTS}/${item.id.toString()}`)}>
       <BaseView className={'px-2'}>
@@ -57,8 +72,12 @@ export const StoreItem: FC<StoreItemProps> = (props) => {
         </BaseView>
       </BaseView>
 
-      <BaseView className={'p-4'}>
-        <BaseButton label={'Add to Basket'} className={'invisible group-hover:visible bg-green-450 p-2'} />
+      <BaseView className={'p-4 z-60'}>
+        <BaseButton
+          label={'Add to Basket'}
+          className={'invisible group-hover:visible bg-green-450 p-2'}
+          onClick={_addProduct}
+        />
       </BaseView>
     </BaseView>
   );

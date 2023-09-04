@@ -2,9 +2,11 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 import { User } from '@/models/userModel';
+import { Product } from '@/types/product.model';
 
 type MainSlice = {
   user: User | undefined;
+  basket_items: Array<Product>;
   preferences: {
     isDarkMode: boolean;
   };
@@ -20,6 +22,7 @@ const isDarkMode = () => {
 
 const initialState: MainSlice = {
   user: undefined,
+  basket_items: [],
   preferences: {
     isDarkMode: isDarkMode(),
   },
@@ -35,7 +38,27 @@ export const mainSlice = createSlice({
     setDarkMode(state, action) {
       state.preferences.isDarkMode = action.payload;
     },
+    addProduct(
+      state,
+      action: {
+        payload: {
+          product: Product;
+        };
+      },
+    ) {
+      state.basket_items = [...state.basket_items, action.payload.product];
+    },
+    removeProduct(
+      state,
+      action: {
+        payload: {
+          id: number;
+        };
+      },
+    ) {
+      state.basket_items = (state.basket_items || []).filter((product) => product.id === action.payload.id);
+    },
   },
 });
 
-export const { setUser, setDarkMode } = mainSlice.actions;
+export const { setUser, setDarkMode, addProduct, removeProduct } = mainSlice.actions;

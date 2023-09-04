@@ -45,4 +45,5 @@ export const {
   useGetCategoriesQuery,
   useLazyGetCategoryProductsQuery,
   useGetProductQuery,
+  useLazyGetProductQuery,
 } = productServiceApi;

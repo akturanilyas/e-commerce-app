@@ -11,8 +11,10 @@ import { MAIN_PATH } from '@/constants/mainPath.constant';
 import TextInput from '@/components/common/TextInput';
 import { useForm } from 'react-hook-form';
 import { useDebounce } from '@/hooks/useDebounce';
+import { useMain } from '@/hooks/useSlices';
 
 const ProductList: FC<ProductListProps> = (props) => {
+    const { basket_items } = useMain();
   const { products } = props;
   const { category } = useParams() as {
     category: string;
@@ -31,14 +33,18 @@ const ProductList: FC<ProductListProps> = (props) => {
   useDebounce(
     () => {
       setProducts(
-        products?.filter((product) => JSON.stringify([product.title, product.description, product.brand])
+        products?.filter((product) =>
+          JSON.stringify([product.title, product.description, product.brand])
             .toLowerCase()
-            .includes(String(form.getValues('search')).toLowerCase())),
+            .includes(String(form.getValues('search')).toLowerCase()),
+        ),
       );
     },
     222,
     [form.watch('search')],
   );
+
+  console.log(basket_items);
 
   return (
     <BaseView className={'w-full h-full'}>
