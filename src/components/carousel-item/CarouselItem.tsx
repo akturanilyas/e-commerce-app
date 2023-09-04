@@ -1,5 +1,3 @@
-'use client';
-
 import { FC, useState } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import { Image } from '@/components/common/image/Image';

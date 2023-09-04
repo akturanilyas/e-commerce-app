@@ -1,3 +1,5 @@
+'use client';
+
 import { DependencyList, useEffect } from 'react';
 
 export function useDebounce(callback: (deps?: DependencyList) => void, waitTime: number, deps?: DependencyList) {

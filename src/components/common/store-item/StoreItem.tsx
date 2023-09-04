@@ -1,5 +1,3 @@
-'use client';
-
 import BaseView from '@/components/common/base-view/BaseView';
 import { FC, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';

@@ -11,7 +11,6 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
 const Header: FC<HeaderProps> = (props) => {
-  const form = useForm();
   const { className } = props;
   const router = useRouter();
   const classes = twMerge(`

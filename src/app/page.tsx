@@ -5,12 +5,11 @@ import {
   useGetProductsQuery,
   useLazyGetCategoryProductsQuery,
 } from '@/api/base/services/product-service/productService';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { words } from 'lodash';
 import ProductList from '@/components/product-list/ProductList';
 
 const Page = () => {
-  const route = useRouter();
   const pathname = usePathname();
   const { data: productsResponse } = useGetProductsQuery({});
   const [getProducts, { data: categoryProducts }] = useLazyGetCategoryProductsQuery();
