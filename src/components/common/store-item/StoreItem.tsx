@@ -49,7 +49,7 @@ export const StoreItem: FC<StoreItemProps> = (props) => {
     getProduct({ id: item.id })
       .unwrap()
       .then((product) => {
-        dispatch(addProduct({ product }));
+        dispatch(addProduct({ product: { ...product, count: 1 } }));
       });
   };
 

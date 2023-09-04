@@ -24,4 +24,5 @@ export type Product = {
   category: string;
   thumbnail: string;
   images: Array<string>;
+  count?: number;
 };

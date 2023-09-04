@@ -19,6 +19,7 @@ const BaseInput = forwardRef((props: BaseInputProps, ref: ForwardedRef<HTMLInput
     suffix,
     isError = false,
     onBlur,
+    className,
   } = props;
 
   const inputClasses = twMerge(`
@@ -62,7 +63,7 @@ const BaseInput = forwardRef((props: BaseInputProps, ref: ForwardedRef<HTMLInput
   const isRequired = () => rules && JSON.stringify(rules).includes('"required":true');
 
   return (
-    <BaseView className={'grow'}>
+    <BaseView className={twMerge(`grow ${className}`)}>
       {label && (
         <BaseLabel name={name} text={label} htmlFor={name} isRequired={isRequired()} className={labelClasses} />
       )}

@@ -14,7 +14,7 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { useMain } from '@/hooks/useSlices';
 
 const ProductList: FC<ProductListProps> = (props) => {
-    const { basket_items } = useMain();
+    const { basketItems } = useMain();
   const { products } = props;
   const { category } = useParams() as {
     category: string;
@@ -43,8 +43,6 @@ const ProductList: FC<ProductListProps> = (props) => {
     222,
     [form.watch('search')],
   );
-
-  console.log(basket_items);
 
   return (
     <BaseView className={'w-full h-full'}>

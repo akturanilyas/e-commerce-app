@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useLazyGetCategoryProductsQuery } from '@/api/base/services/product-service/productService';
 import { useParams } from 'next/navigation';

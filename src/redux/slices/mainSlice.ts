@@ -6,7 +6,7 @@ import { Product } from '@/types/product.model';
 
 type MainSlice = {
   user: User | undefined;
-  basket_items: Array<Product>;
+  basketItems: Array<Product>;
   preferences: {
     isDarkMode: boolean;
   };
@@ -22,7 +22,7 @@ const isDarkMode = () => {
 
 const initialState: MainSlice = {
   user: undefined,
-  basket_items: [],
+  basketItems: [],
   preferences: {
     isDarkMode: isDarkMode(),
   },
@@ -46,7 +46,14 @@ export const mainSlice = createSlice({
         };
       },
     ) {
-      state.basket_items = [...state.basket_items, action.payload.product];
+      const existItem = state.basketItems.find((item) => item.id === action.payload.product.id);
+
+      if (existItem) {
+        existItem.count! += 1;
+      } else {
+        action.payload.product.count = 1;
+        state.basketItems.push(action.payload.product);
+      }
     },
     removeProduct(
       state,
@@ -56,9 +63,29 @@ export const mainSlice = createSlice({
         };
       },
     ) {
-      state.basket_items = (state.basket_items || []).filter((product) => product.id === action.payload.id);
+      state.basketItems = (state.basketItems || []).filter((product) => product.id !== action.payload.id);
+    },
+    incrementItem(
+      state,
+      action: {
+        payload: {
+          id: number;
+        };
+      },
+    ) {
+      (state.basketItems || []).find((product) => product.id === action.payload.id)!.count! += 1;
+    },
+    decrementItem(
+      state,
+      action: {
+        payload: {
+          id: number;
+        };
+      },
+    ) {
+      (state.basketItems || []).find((product) => product.id === action.payload.id)!.count! -= 1;
     },
   },
 });
 
-export const { setUser, setDarkMode, addProduct, removeProduct } = mainSlice.actions;
+export const { setUser, setDarkMode, addProduct, removeProduct, incrementItem, decrementItem } = mainSlice.actions;

@@ -11,9 +11,10 @@ import BaseText from '@/components/common/base-text/BaseText';
 import { CUSTOM_ICON } from '@/constants/customIcon.constant';
 import Button from '@/components/common/button/Button';
 import { useMain } from '@/hooks/useSlices';
+import { MAIN_PATH } from '@/constants/mainPath.constant';
 
 const Header: FC<HeaderProps> = (props) => {
-  const { basket_items } = useMain();
+  const { basketItems } = useMain();
   const { className } = props;
   const router = useRouter();
   const classes = twMerge(`
@@ -32,14 +33,18 @@ const Header: FC<HeaderProps> = (props) => {
   return (
     <BaseView className={classes}>
       <BaseView className={'w-1/6 items-start cursor-pointer'}>
-        <Logo onClick={() => router.push('/')} />
+        <Logo onClick={() => router.push(MAIN_PATH.DASHBOARD)} />
       </BaseView>
       <BaseView className={'flex flex-row w-1/6 justify-end'}>
         <BaseView className={'flex relative'}>
-          <Button icon={{ icon: CUSTOM_ICON.BELL }} className={'bg-transparent'} />
+          <Button
+            icon={{ icon: CUSTOM_ICON.BELL }}
+            className={'bg-transparent'}
+            onClick={() => router.push(MAIN_PATH.BASKET)}
+          />
           <BaseView className={'bottom-1 right-1 bg-red-600 rounded-2xl w-[16px] absolute'}>
-            {basket_items && (
-              <BaseText text={basket_items.length.toString()} className={'text-slate-100 self-center text-sm'} />
+            {basketItems?.length && (
+              <BaseText text={basketItems.length.toString()} className={'text-slate-100 self-center text-sm'} />
             )}
           </BaseView>
         </BaseView>
