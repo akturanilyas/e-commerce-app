@@ -35,10 +35,14 @@ const Header: FC<HeaderProps> = (props) => {
       <BaseView className={'w-1/6 items-start cursor-pointer'}>
         <Logo onClick={() => router.push(MAIN_PATH.DASHBOARD)} />
       </BaseView>
-      <BaseView className={'flex flex-row w-1/6 justify-end'}>
+      <BaseView className={'flex flex-row w-1/6 justify-end gap-2'}>
         <BaseView className={'flex relative'}>
           <Button
-            icon={{ icon: CUSTOM_ICON.BELL }}
+            icon={{
+              icon: CUSTOM_ICON.SHOPPING_CARD,
+              customSize: 20,
+              className: 'text-slate-600 dark:text-slate-200',
+            }}
             className={'bg-transparent'}
             onClick={() => router.push(MAIN_PATH.BASKET)}
           />
