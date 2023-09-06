@@ -36,7 +36,7 @@ const Header: FC<HeaderProps> = (props) => {
         <Logo onClick={() => router.push(MAIN_PATH.DASHBOARD)} />
       </BaseView>
       <BaseView className={'flex flex-row w-1/6 justify-end gap-2'}>
-        <BaseView className={'flex relative'}>
+        <BaseView className={'flex relative'} onClick={() => router.push(MAIN_PATH.BASKET)}>
           <Button
             icon={{
               icon: CUSTOM_ICON.SHOPPING_CARD,
@@ -44,9 +44,8 @@ const Header: FC<HeaderProps> = (props) => {
               className: 'text-slate-600 dark:text-slate-200',
             }}
             className={'bg-transparent'}
-            onClick={() => router.push(MAIN_PATH.BASKET)}
           />
-          <BaseView className={'bottom-1 right-1 bg-red-600 rounded-2xl w-[16px] absolute'}>
+          <BaseView className={'bottom-1 right-1 bg-red-600 rounded-2xl w-[16px] absolute cursor-pointer'}>
             {basketItems?.length && (
               <BaseText text={basketItems.length.toString()} className={'text-slate-100 self-center text-sm'} />
             )}

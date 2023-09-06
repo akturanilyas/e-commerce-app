@@ -1,16 +1,23 @@
+'use client';
+
 import React, { FC } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import { CUSTOM_ICON } from '@/constants/customIcon.constant';
 import { twMerge } from 'tailwind-merge';
-import { CarouselItemProps } from '@/components/carousel-item/CarouselItem.interface';
 import BaseText from '@/components/common/base-text/BaseText';
-import { map, sum } from 'lodash';
+import lodash, { map, sum } from 'lodash';
 import Button from '@/components/common/button/Button';
 import { getFormattedAmount } from '@/utils/amountUtil';
 import { useMain } from '@/hooks/useSlices';
+import { useAppDispatch } from '@/hooks/useRedux';
+import { addResult } from '@/redux/slices/resultSlice';
+import { ResultType } from '@/enums/common.enum';
+import { TotalAmountCardProps } from '@/components/total-amound-card/TotalAmountCard.interface';
 
-export const TotalAmountCard: FC<CarouselItemProps> = (props) => {
+export const TotalAmountCard: FC<TotalAmountCardProps> = (props) => {
   const { className } = props;
+
+  const dispatch = useAppDispatch();
 
   const { basketItems } = useMain();
 
@@ -35,6 +42,16 @@ export const TotalAmountCard: FC<CarouselItemProps> = (props) => {
           className={'bg-green-450 dark:bg-green-450 shadow-md'}
           label={'Purchase'}
           icon={{ icon: CUSTOM_ICON.SHOPPING_CARD }}
+          onClick={() => {
+            dispatch(
+              addResult({
+                id: lodash.uniqueId(),
+                type: ResultType.SUCCESS,
+                title: 'error',
+                message: 'error.errorLabel',
+              }),
+            );
+          }}
         />
       </BaseView>
     </BaseView>
