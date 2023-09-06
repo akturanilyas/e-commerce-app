@@ -85,7 +85,11 @@ export const mainSlice = createSlice({
     ) {
       (state.basketItems || []).find((product) => product.id === action.payload.id)!.count! -= 1;
     },
+    removeAllItems(state) {
+      state.basketItems = [];
+    },
   },
 });
 
-export const { setUser, setDarkMode, addProduct, removeProduct, incrementItem, decrementItem } = mainSlice.actions;
+export const { setUser, setDarkMode, addProduct, removeProduct, incrementItem, decrementItem, removeAllItems }
+  = mainSlice.actions;

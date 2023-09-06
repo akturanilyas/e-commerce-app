@@ -107,6 +107,7 @@ export { default as Droplet } from './Droplet';
 export { default as Edit2 } from './Edit2';
 export { default as Edit3 } from './Edit3';
 export { default as Edit } from './Edit';
+export { default as EmptyBox } from './EmptyBox';
 export { default as Equals } from './Equals';
 export { default as ExternalLink } from './ExternalLink';
 export { default as EyeOff } from './EyeOff';

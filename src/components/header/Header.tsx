@@ -45,11 +45,15 @@ const Header: FC<HeaderProps> = (props) => {
             }}
             className={'bg-transparent'}
           />
-          <BaseView className={'bottom-1 right-1 bg-red-600 rounded-2xl w-[16px] absolute cursor-pointer'}>
-            {basketItems?.length && (
-              <BaseText text={basketItems.length.toString()} className={'text-slate-100 self-center text-sm'} />
-            )}
-          </BaseView>
+          {basketItems?.length > 0 && (
+            <BaseView
+              className={
+                'bottom-1 right-1 bg-red-600 rounded-2xl w-[16px] h-[16px] absolute cursor-pointer text-center items-center'
+              }
+            >
+              <BaseText text={basketItems.length.toString()} className={'text-slate-100 self-center text-xs'} />
+            </BaseView>
+          ) }
         </BaseView>
         <DarkModeButton />
       </BaseView>

@@ -13,6 +13,7 @@ import { useAppDispatch } from '@/hooks/useRedux';
 import { addResult } from '@/redux/slices/resultSlice';
 import { ResultType } from '@/enums/common.enum';
 import { TotalAmountCardProps } from '@/components/total-amound-card/TotalAmountCard.interface';
+import { removeAllItems } from '@/redux/slices/mainSlice';
 
 export const TotalAmountCard: FC<TotalAmountCardProps> = (props) => {
   const { className } = props;
@@ -51,6 +52,8 @@ export const TotalAmountCard: FC<TotalAmountCardProps> = (props) => {
                 message: 'error.errorLabel',
               }),
             );
+
+            dispatch(removeAllItems());
           }}
         />
       </BaseView>
