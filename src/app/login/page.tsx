@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/slices/mainSlice';
 import { useRouter } from 'next/navigation';
 import { MAIN_PATH } from '@/constants/mainPath.constant';
+import BaseText from '@/components/common/base-text/BaseText';
 
 const Page = () => {
   const form = useForm();
@@ -23,13 +24,16 @@ const Page = () => {
 
   return (
     <BaseView className={'h-full items-center justify-center gap-4'}>
-      <LoginForm form={form} />
-      <Button
-        label={'Login'}
-        suffixIcon={{ icon: CUSTOM_ICON.LOGIN }}
-        onClick={form.handleSubmit(handleSubmit)}
-        className={'dark:bg-green-450 self-end'}
-      />
+      <BaseView className={'shadow-md px-16 py-8 border rounded-md gap-4'}>
+        <BaseText text={'Welcome'} className={'text-4xl text-slate-400 text-center pb-4'} />
+        <LoginForm form={form} />
+        <Button
+          label={'Login'}
+          suffixIcon={{ icon: CUSTOM_ICON.LOGIN }}
+          onClick={form.handleSubmit(handleSubmit)}
+          className={'bg-green-450 dark:bg-green-450 self-end'}
+        />
+      </BaseView>
     </BaseView>
   );
 };
