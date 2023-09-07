@@ -4,10 +4,10 @@ import { LoginFormProps } from '@/components/form/LoginForm.interface';
 import TextInput from '@/components/common/TextInput';
 
 const LoginForm: FC<LoginFormProps> = (props) => {
-  const { form } = props;
+  const { form, className } = props;
 
   return (
-    <BaseView>
+    <BaseView className={className}>
       <TextInput form={form} name={'name'} label={'Name'} />
       <TextInput form={form} name={'surname'} label={'Surname'} />
       <TextInput form={form} name={'email'} label={'Email'} />

@@ -14,10 +14,14 @@ import { useMain } from '@/hooks/useSlices';
 import { MAIN_PATH } from '@/constants/mainPath.constant';
 import CustomIconProvider from '@/providers/CustomIconProvider';
 import { UserStatus } from '@/enums/common.enum';
+import { useAppDispatch } from '@/hooks/useRedux';
+import { setUser } from '@/redux/slices/mainSlice';
 
 const Header: FC<HeaderProps> = (props) => {
   const { basketItems, user } = useMain();
   const { className } = props;
+
+  const dispatch = useAppDispatch();
 
   const router = useRouter();
   const classes = twMerge(`
@@ -33,16 +37,27 @@ const Header: FC<HeaderProps> = (props) => {
     ${className}
   `);
 
+  const logOut = () => {
+    dispatch(setUser(undefined));
+  };
+
   const buttons = {
     [UserStatus.LOGGED_IN]: (
-      <BaseView
-        className={`
+      <BaseView className={'flex flex-row gap-2'}>
+        <BaseView
+          className={`
         flex flex-row bg-green-450 
         items-center gap-2 border-2 
         border-green-600 rounded-md px-4 cursor-pointer`}
-      >
-        <CustomIconProvider icon={CUSTOM_ICON.USER} />
-        <BaseText text={`${user?.name} ${user?.surname}`} className={'truncate'} />
+        >
+          <CustomIconProvider icon={CUSTOM_ICON.USER} />
+          <BaseText text={`${user?.name} ${user?.surname}`} className={'truncate text-slate-100'} />
+        </BaseView>
+        <Button
+          icon={{ icon: CUSTOM_ICON.LOGOUT, className: 'text-red-400' }}
+          className={'border border-red-400 bg-slate-100'}
+          onClick={logOut}
+        />
       </BaseView>
     ),
     [UserStatus.GUEST]: (
@@ -55,7 +70,7 @@ const Header: FC<HeaderProps> = (props) => {
         onClick={() => router.push(MAIN_PATH.LOGIN)}
       >
         <CustomIconProvider icon={CUSTOM_ICON.USER} />
-        <BaseText text={'Login'} />
+        <BaseText text={'Login'} className={'text-slate-100'}/>
       </BaseView>
     ),
   };
@@ -65,13 +80,11 @@ const Header: FC<HeaderProps> = (props) => {
       <BaseView className={'w-1/6 items-start cursor-pointer'}>
         <Logo onClick={() => router.push(MAIN_PATH.DASHBOARD)} />
       </BaseView>
-      <BaseView className={'flex flex-row w-1/6 justify-end gap-2'}>
-        {user ? buttons[UserStatus.LOGGED_IN] : buttons[UserStatus.GUEST]}
+      <BaseView className={'flex flex-row w-1/6 justify-end gap-4'}>
         <BaseView className={'flex relative'} onClick={() => router.push(MAIN_PATH.BASKET)}>
           <Button
             icon={{
               icon: CUSTOM_ICON.SHOPPING_CARD,
-              customSize: 20,
               className: 'text-slate-600 dark:text-slate-200',
             }}
             className={'bg-transparent'}
@@ -87,6 +100,7 @@ const Header: FC<HeaderProps> = (props) => {
           )}
         </BaseView>
         <DarkModeButton />
+        {user ? buttons[UserStatus.LOGGED_IN] : buttons[UserStatus.GUEST]}
       </BaseView>
     </BaseView>
   );
