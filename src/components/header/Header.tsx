@@ -42,7 +42,7 @@ const Header: FC<HeaderProps> = (props) => {
         border-green-600 rounded-md px-4 cursor-pointer`}
       >
         <CustomIconProvider icon={CUSTOM_ICON.USER} />
-        <BaseText text={'Login'} />
+        <BaseText text={`${user?.name} ${user?.surname}`} className={'truncate'} />
       </BaseView>
     ),
     [UserStatus.GUEST]: (
