@@ -11,7 +11,6 @@ import { getFormattedAmount } from '@/utils/amountUtil';
 import { useMain } from '@/hooks/useSlices';
 import { useAppDispatch } from '@/hooks/useRedux';
 import { addResult } from '@/redux/slices/resultSlice';
-import { ResultType } from '@/enums/common.enum';
 import { TotalAmountCardProps } from '@/components/total-amound-card/TotalAmountCard.interface';
 import { removeAllItems } from '@/redux/slices/mainSlice';
 
@@ -44,14 +43,7 @@ export const TotalAmountCard: FC<TotalAmountCardProps> = (props) => {
           label={'Purchase'}
           icon={{ icon: CUSTOM_ICON.SHOPPING_CARD }}
           onClick={() => {
-            dispatch(
-              addResult({
-                id: lodash.uniqueId(),
-                type: ResultType.SUCCESS,
-                title: 'error',
-                message: 'error.errorLabel',
-              }),
-            );
+            dispatch(addResult({ id: lodash.uniqueId() }));
 
             dispatch(removeAllItems());
           }}

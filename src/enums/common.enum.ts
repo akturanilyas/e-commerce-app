@@ -1,9 +1,3 @@
-export enum ResultType {
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  DANGER = 'danger',
-}
-
 export enum InputType {
   CHECKBOX = 'checkbox',
   TEXT = 'text',
@@ -12,4 +6,9 @@ export enum InputType {
   NUMBER = 'number',
   FILE = 'file',
   TEXTAREA = 'textarea',
+}
+
+export enum UserStatus {
+  LOGGED_IN = 'loggedIn',
+  GUEST = 'guest',
 }
