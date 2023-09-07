@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ResultType } from '@/enums/common.enum';
 
 export type ResultItem = {
   id: string;
-  type: ResultType;
-  title: string;
+    title: string;
   message: string;
 };
 

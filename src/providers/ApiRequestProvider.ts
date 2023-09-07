@@ -12,7 +12,6 @@ import { BaseQueryFunctionParams } from './ApiRequestProvider.interface';
 import { AxiosProvider } from './AxiosProvider';
 import { ApiError } from './AxiosProvider.interface';
 import { addResult } from '@/redux/slices/resultSlice';
-import { ResultType } from '@/enums/common.enum';
 import { ApiErrorUseCase } from '@/enums/error.enum';
 
 export class ApiRequestProvider {
@@ -45,7 +44,6 @@ export class ApiRequestProvider {
     dispatch(
       addResult({
         id: lodash.uniqueId(),
-        type: ResultType.DANGER,
         title: error.errorTitle,
         message: error.errorLabel,
       }),
