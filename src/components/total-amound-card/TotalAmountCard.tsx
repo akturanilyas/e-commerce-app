@@ -1,5 +1,3 @@
-'use client';
-
 import React, { FC } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import { CUSTOM_ICON } from '@/constants/customIcon.constant';

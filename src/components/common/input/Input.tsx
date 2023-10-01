@@ -1,8 +1,9 @@
+'use client';
+
 import lodash, { isEmpty } from 'lodash';
 import React, { FormEvent, ForwardedRef, forwardRef, useEffect } from 'react';
 import { Controller, Noop } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
-import { translate } from '@/utils/translateUtil';
 import BaseView from '../base-view/BaseView';
 import { InputProps } from './Input.interface';
 import BaseInput from '@/components/common/base-input/BaseInput';

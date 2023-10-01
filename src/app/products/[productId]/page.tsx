@@ -38,10 +38,19 @@ const Page = () => {
     <>
       {product && (
         <BaseView className={'h-full w-full pt-4'}>
-          <BaseView className={'flex flex-row w-full border rounded-2xl dark:border-gray-700 divide-x-2 dark:divide-gray-700 h-3/5'}>
+          <BaseView
+            className={
+              'flex flex-row w-full border rounded-2xl dark:border-gray-700 divide-x-2 dark:divide-gray-700 h-3/5'
+            }
+          >
             <BaseView className={'w-1/2 align-middle h-full p-8'}>
               <BaseView className={'h-full max-h-full'}>
-                <CarouselItem images={product.images} className={'h-full max-h-full'} imageClassName={'max-h-full'} imageContainerClassName={'h-full'} />
+                <CarouselItem
+                  images={product.images}
+                  className={'h-full max-h-full'}
+                  imageClassName={'max-h-full'}
+                  imageContainerClassName={'h-full'}
+                />
               </BaseView>
             </BaseView>
 
@@ -66,7 +75,6 @@ const Page = () => {
                       <BaseText text={`Remaining Stock:${product.stock}`} />
                     </BaseView>
                   </BaseView>
-
                 </BaseView>
               </BaseView>
               <BaseView className={'p-4'}>

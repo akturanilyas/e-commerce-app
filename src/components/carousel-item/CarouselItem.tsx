@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, useState } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import { Image } from '@/components/common/image/Image';
@@ -8,7 +10,7 @@ import { CarouselItemProps } from '@/components/carousel-item/CarouselItem.inter
 
 export const CarouselItem: FC<CarouselItemProps> = (props) => {
   const { className, images, imageClassName, imageContainerClassName } = props;
-  const [currentImage, setCurrentImage] = useState<string>(images[3]);
+  const [currentImage, setCurrentImage] = useState<string>(images[0]);
 
   const classes = twMerge(`
      rounded-2xl

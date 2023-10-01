@@ -1,4 +1,3 @@
-'use client';
 
 import { FC } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';

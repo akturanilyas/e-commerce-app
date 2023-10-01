@@ -1,4 +1,3 @@
-'use client';
 
 import { Get } from '@/api/commonService.interface';
 import { ENDPOINT } from '@/api/endpoints';

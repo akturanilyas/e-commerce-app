@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import { setDarkMode } from '@/redux/slices/mainSlice';
 import { useAppDispatch } from './useRedux';

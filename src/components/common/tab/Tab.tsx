@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FC, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { TabProps } from '@/components/common/tab/Tab.interface';

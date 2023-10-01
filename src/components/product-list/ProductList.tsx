@@ -1,8 +1,5 @@
-'use client';
-
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
-import { StoreItem } from '@/components/common/store-item/StoreItem';
 import { useGetCategoriesQuery } from '@/api/base/services/product-service/productService';
 import Tab from '@/components/common/tab/Tab';
 import { useParams, useRouter } from 'next/navigation';
@@ -10,11 +7,9 @@ import { ProductListProps } from '@/components/product-list/ProductList.interfac
 import { MAIN_PATH } from '@/constants/mainPath.constant';
 import TextInput from '@/components/common/TextInput';
 import { useForm } from 'react-hook-form';
-import { useDebounce } from '@/hooks/useDebounce';
-import { useMain } from '@/hooks/useSlices';
+import ProductListItems from '@/components/product-list/ProductListItems';
 
 const ProductList: FC<ProductListProps> = (props) => {
-    const { basketItems } = useMain();
   const { products } = props;
   const { category } = useParams() as {
     category: string;
@@ -27,22 +22,6 @@ const ProductList: FC<ProductListProps> = (props) => {
     label: category,
     path: category,
   }));
-
-  const [_products, setProducts] = useState(products);
-
-  useDebounce(
-    () => {
-      setProducts(
-        products?.filter((product) =>
-          JSON.stringify([product.title, product.description, product.brand])
-            .toLowerCase()
-            .includes(String(form.getValues('search')).toLowerCase()),
-        ),
-      );
-    },
-    222,
-    [form.watch('search')],
-  );
 
   return (
     <BaseView className={'w-full h-full'}>
@@ -67,17 +46,7 @@ const ProductList: FC<ProductListProps> = (props) => {
         </BaseView>
       </BaseView>
 
-      <BaseView
-        className={`flex flex-row flex-wrap border-2 border-slate-200 
-          dark:border-gray-700 dark:bg-gray-800 
-          rounded-md h-full my-4 shadow-md`}
-      >
-        {_products?.map((item) => (
-          <BaseView key={item.id} className={'sm:w-1/2 md:w-1/4 lg:w-1/5 p-4'}>
-            <StoreItem key={item.id} item={item} />
-          </BaseView>
-        ))}
-      </BaseView>
+      <ProductListItems products={products} search={form.watch('search')} />
     </BaseView>
   );
 };
