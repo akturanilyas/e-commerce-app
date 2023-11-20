@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import { StoreItem } from '@/components/common/store-item/StoreItem';
 import { useDebounce } from '@/hooks/useDebounce';
@@ -11,13 +11,14 @@ const ProductListItems: FC<ProductListItemsProps> = ({ products, search }) => {
 
   useDebounce(
     () => {
-      setProducts(
-        products?.filter((product) =>
-          JSON.stringify([product.title, product.description, product.brand])
-            .toLowerCase()
-            .includes(String(search).toLowerCase()),
-        ),
-      );
+      search
+        && setProducts(
+          products?.filter((product) =>
+            JSON.stringify([product.title, product.description, product.brand])
+              .toLowerCase()
+              .includes(String(search).toLowerCase()),
+          ),
+        );
     },
     222,
     [search],
