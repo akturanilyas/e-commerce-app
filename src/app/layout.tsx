@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <LoadingProvider />
               <BaseView className={'items-center min-h-full w-full bg-white dark:bg-gray-950'}>
                 <Header className={'sticky top-0'} />
-                <BaseView className={'w-2/3 items-center h-full'}>{children}</BaseView>
+                <BaseView className={'md:w-full lg:w-3/4 2xl:2/3 items-center h-full'}>{children}</BaseView>
                 <Footer />
               </BaseView>
             </BaseView>

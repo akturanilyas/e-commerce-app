@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import BaseView from '@/components/common/base-view/BaseView';
 import { StoreItem } from '@/components/common/store-item/StoreItem';
 import { useDebounce } from '@/hooks/useDebounce';
@@ -31,7 +31,7 @@ const ProductListItems: FC<ProductListItemsProps> = ({ products, search }) => {
           rounded-md h-full my-4 shadow-md`}
     >
       {_products?.map((item) => (
-        <BaseView key={item.id} className={'sm:w-1/2 md:w-1/4 lg:w-1/5 p-4'}>
+        <BaseView key={item.id} className={'sm:w-1/2 md:w-1/3 lg:w-1/5 xl:1/5 2xl:1/5 p-4'}>
           <StoreItem key={item.id} item={item} />
         </BaseView>
       ))}
