@@ -21,7 +21,7 @@ export const productServiceApi = baseApi.injectEndpoints({
         data: { params: query },
       }),
     }),
-    getCategories: builder.query<Array<string>, Get>({
+    getCategories: builder.query<Array<Record<string, string>>, Get>({
       query: ({ query }) => ({
         url: `${ENDPOINT.PRODUCTS}${ENDPOINT.CATEGORIES}`,
         method: ApiServiceMethod.GET,

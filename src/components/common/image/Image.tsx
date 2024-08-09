@@ -15,7 +15,7 @@ export const Image: FC<ImageProps> = ({ className, imageClassName, src, width, h
 
   return (
     <BaseView className={classes}>
-      <img src={src} className={imageClasses} alt={src} width={width} height={height} />
+      <img src={src} className={imageClasses} alt={src} width={width} height={height} loading={'lazy'} />
     </BaseView>
   );
 };

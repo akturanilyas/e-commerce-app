@@ -19,8 +19,8 @@ const ProductList: FC<ProductListProps> = (props) => {
 
   const { data: categories } = useGetCategoriesQuery({});
   const items = categories?.slice(0, 5).map((category) => ({
-    label: category,
-    path: category,
+    label: category.name,
+    path: category.slug,
   }));
 
   return (
